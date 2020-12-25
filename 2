@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <malloc.h>
+
+struct number_parity
+{
+  int number;
+  char *parity;
+};
+
+int main()
+{
+  int size;
+  printf("Введите размер массива: ");
+  scanf("%d", &size);
+  struct number_parity *arr;
+  arr = (struct number_parity*)malloc(size * sizeof(struct number_parity));
+  
+  for (int i = 0; i < size; i++)
+  {
+    printf("a[%d] = ", i);
+    scanf("%d", &arr[i].number);
+    if ((arr[i].number) % 2 == 0) 
+    {
+      arr[i].parity = "- четное";
+    }
+    else 
+    {
+      arr[i].parity = "- нечетное";
+    }
+  }  
+  for (int i = 0; i < size; i++)
+  {
+    printf("%d %s\n", arr[i].number, arr[i].parity);
+  }
+  free(arr);
+
+  return 0;
+}
